@@ -108,3 +108,8 @@ error:
   player_only: "&c该命令只能由玩家执行！"
   unknown_command: "&c未知命令！使用 /war help 查看帮助。"
   config_error: "&c配置文件错误，请联系管理员！"
+
+# 超时消息
+timeout:
+  challenge_expired: "&c挑战已超时取消！"
+  challenge_timeout: "&c挑战超时！双方未在60秒内完成操作，挑战已取消。"

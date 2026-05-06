@@ -37,6 +37,7 @@ teleport:
 loot:
   place_hint: "&e请在战利品箱子中放置你的奖励物品（也可以不放）。"
   done_success: "&a你已完成战利品放置！&e等待对方完成放置..."
+  opponent_done: "&e%player% &a已完成战利品放置！"
   already_done: "&c你已经完成放置了！"
   both_done: "&a双方已完成战利品放置！&e请检查奖励物品，确认后输入 &6/war confirm &e确认。"
   chest_locked: "&c战利品箱子已锁定，无法移动物品！"
@@ -45,6 +46,7 @@ loot:
 # 确认相关消息
 confirm:
   success: "&a你已确认战利品！&e等待对方确认..."
+  opponent_confirmed: "&e%player% &a已确认战利品！"
   already_confirmed: "&c你已经确认过了！"
   both_confirmed: "&a双方已确认战利品！&e3秒后传送到战场..."
   not_done_placing: "&c请先完成战利品放置！"

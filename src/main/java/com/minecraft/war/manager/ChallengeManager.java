@@ -85,6 +85,12 @@ public class ChallengeManager {
         Player challenger = Bukkit.getPlayer(challenge.getChallengerId());
         Player opponent = Bukkit.getPlayer(challenge.getOpponentId());
         
+        if (challenge.getState() == Challenge.State.LOOT_PLACING || 
+            challenge.getState() == Challenge.State.CONFIRMING) {
+            returnItemsToPlayer(challenger, challenge.getChallengerItems());
+            returnItemsToPlayer(opponent, challenge.getOpponentItems());
+        }
+        
         if (challenger != null) {
             challenger.sendMessage(plugin.getLanguageManager().getPrefixedMessage("timeout.challenge_timeout"));
         }

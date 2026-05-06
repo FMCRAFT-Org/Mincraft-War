@@ -23,6 +23,8 @@ public class ChallengeManager {
     private final Map<UUID, Challenge> activeChallenges;
     private final Map<UUID, Location> savedLocations;
     private final Set<UUID> offlinePlayers;
+    private BukkitRunnable timeoutTask;
+    private static final long TIMEOUT_SECONDS = 60;
     
     public ChallengeManager(WarPlugin plugin) {
         this.plugin = plugin;
@@ -30,6 +32,70 @@ public class ChallengeManager {
         this.activeChallenges = new HashMap<>();
         this.savedLocations = new HashMap<>();
         this.offlinePlayers = new HashSet<>();
+        startTimeoutTask();
+    }
+    
+    private void startTimeoutTask() {
+        timeoutTask = new BukkitRunnable() {
+            @Override
+            public void run() {
+                checkTimeouts();
+            }
+        };
+        timeoutTask.runTaskTimer(plugin, 20L * 10, 20L * 10);
+    }
+    
+    private void checkTimeouts() {
+        long currentTime = System.currentTimeMillis();
+        long timeoutMillis = TIMEOUT_SECONDS * 1000;
+        
+        List<Challenge> pendingToRemove = new ArrayList<>();
+        for (Challenge challenge : pendingChallenges.values()) {
+            if (challenge.getState() == Challenge.State.WAITING) {
+                if (currentTime - challenge.getStateStartTime() > timeoutMillis) {
+                    pendingToRemove.add(challenge);
+                }
+            }
+        }
+        
+        for (Challenge challenge : pendingToRemove) {
+            Player challenger = Bukkit.getPlayer(challenge.getChallengerId());
+            if (challenger != null) {
+                challenger.sendMessage(plugin.getLanguageManager().getPrefixedMessage("timeout.challenge_expired"));
+            }
+            pendingChallenges.remove(challenge.getChallengerId());
+        }
+        
+        List<Challenge> activeToRemove = new ArrayList<>();
+        for (Challenge challenge : activeChallenges.values().stream().distinct().collect(Collectors.toList())) {
+            if (challenge.getState() == Challenge.State.LOOT_PLACING || 
+                challenge.getState() == Challenge.State.CONFIRMING) {
+                if (currentTime - challenge.getStateStartTime() > timeoutMillis) {
+                    activeToRemove.add(challenge);
+                }
+            }
+        }
+        
+        for (Challenge challenge : activeToRemove) {
+            endChallengeWithTimeout(challenge);
+        }
+    }
+    
+    private void endChallengeWithTimeout(Challenge challenge) {
+        Player challenger = Bukkit.getPlayer(challenge.getChallengerId());
+        Player opponent = Bukkit.getPlayer(challenge.getOpponentId());
+        
+        if (challenger != null) {
+            challenger.sendMessage(plugin.getLanguageManager().getPrefixedMessage("timeout.challenge_timeout"));
+        }
+        if (opponent != null) {
+            opponent.sendMessage(plugin.getLanguageManager().getPrefixedMessage("timeout.challenge_timeout"));
+        }
+        
+        activeChallenges.remove(challenge.getChallengerId());
+        activeChallenges.remove(challenge.getOpponentId());
+        pendingChallenges.remove(challenge.getChallengerId());
+        challenge.setState(Challenge.State.ENDED);
     }
     
     public boolean createPublicChallenge(Player challenger) {

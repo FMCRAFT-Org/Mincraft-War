@@ -1,0 +1,108 @@
+# War Plugin Language Configuration
+# 战争插件语言配置文件
+
+prefix: "&6[战争]"
+
+# 挑战相关消息
+challenge:
+  public: "&e%player% &c发起了公开挑战！输入 &e/war accept &c来接受挑战！"
+  public_success: "&a你已成功发起公开挑战！等待其他玩家接受..."
+  private: "&e%player% &c向你发起了挑战！输入 &e/war accept &c接受，&e/war decline &c拒绝！"
+  private_success: "&a你已向 &e%player% &a发起挑战！等待对方接受..."
+  already_in_challenge: "&c你已经在一场挑战中！"
+  target_in_challenge: "&c该玩家已经在一场挑战中！"
+  no_permission: "&c你没有权限发起挑战！"
+  player_not_found: "&c找不到该玩家！"
+  cannot_challenge_self: "&c你不能挑战自己！"
+
+# 接受/拒绝相关消息
+accept:
+  success: "&a你已接受挑战！&e3秒后将传送到战利品放置区域..."
+  no_challenge: "&c没有可接受的挑战！"
+  not_your_challenge: "&c这不是给你的挑战！"
+  
+decline:
+  success: "&a你已拒绝挑战！"
+  no_challenge: "&c没有可拒绝的挑战！"
+  not_your_challenge: "&c这不是给你的挑战！"
+
+# 传送相关消息
+teleport:
+  countdown: "&e将在 &c%time% &e秒后传送..."
+  to_loot_area: "&a已传送到战利品放置区域！&e请在箱子中放置你的奖励物品，完成后输入 &6/war done&e。"
+  to_battlefield: "&e将在 &c%time% &e秒后传送到战场..."
+  battle_start: "&c战斗开始！"
+
+# 战利品放置相关消息
+loot:
+  place_hint: "&e请在战利品箱子中放置你的奖励物品（也可以不放）。"
+  done_success: "&a你已完成战利品放置！&e等待对方完成放置..."
+  already_done: "&c你已经完成放置了！"
+  both_done: "&a双方已完成战利品放置！&e请检查奖励物品，确认后输入 &6/war confirm &e确认。"
+  chest_locked: "&c战利品箱子已锁定，无法移动物品！"
+  no_active_challenge: "&c你没有进行中的挑战！"
+
+# 确认相关消息
+confirm:
+  success: "&a你已确认战利品！&e等待对方确认..."
+  already_confirmed: "&c你已经确认过了！"
+  both_confirmed: "&a双方已确认战利品！&e3秒后传送到战场..."
+  not_done_placing: "&c请先完成战利品放置！"
+
+# 放弃比赛相关消息
+stop:
+  success: "&e你已放弃比赛！战利品已返还。&e输入 &6/war back &e返回之前的位置。"
+  return_loot: "&a你的战利品已返还！"
+  opponent_stop: "&e你的对手已放弃比赛！战利品已返还。&e输入 &6/war back &e返回之前的位置。"
+  not_in_challenge: "&c你没有进行中的挑战！"
+  already_confirmed: "&c双方已确认战利品，无法放弃！"
+
+# 返回相关消息
+back:
+  success: "&a已返回之前的位置！"
+  no_saved_location: "&c没有保存的位置！"
+  not_in_challenge: "&c你没有进行中的挑战！"
+
+# 战斗相关消息
+battle:
+  death: "&c%player% &e在战斗中死亡！"
+  quit: "&c%player% &e退出了游戏，视为战败！"
+  winner: "&a%winner% &6赢得了战斗！获得了所有战利品！&e输入 &6/war back &e返回之前的位置。"
+  loser: "&c%loser% &e输掉了战斗！"
+
+# 管理员相关消息
+admin:
+  no_permission: "&c你没有管理员权限！"
+  box_set: "&a战利品箱子位置已设置！"
+  field_set: "&a战场位置已设置！"
+  stop_success: "&a挑战已强制结束！双方无奖励。"
+  win_success: "&a已强制指定 %player% 获胜！"
+  player_not_in_challenge: "&c该玩家不在挑战中！"
+  not_chest: "&c请站在箱子上执行此命令！"
+
+# 帮助消息
+help:
+  header: "&6========== 战争插件帮助 =========="
+  player:
+    - "&e/war challenge &7- 发起公开挑战"
+    - "&e/war challenge <玩家> &7- 向指定玩家发起挑战"
+    - "&e/war accept &7- 接受挑战"
+    - "&e/war decline &7- 拒绝挑战"
+    - "&e/war done &7- 完成战利品放置"
+    - "&e/war confirm &7- 确认战利品"
+    - "&e/war stop &7- 放弃比赛"
+    - "&e/war back &7- 返回之前位置"
+  admin:
+    - "&c管理员命令:"
+    - "&e/war admin box &7- 设置战利品箱子位置"
+    - "&e/war admin field &7- 设置战场位置"
+    - "&e/war admin stop &7- 强制结束挑战"
+    - "&e/war admin win <玩家> &7- 强制指定获胜者"
+  footer: "&6=================================="
+
+# 错误消息
+error:
+  console_only: "&c该命令只能由控制台执行！"
+  player_only: "&c该命令只能由玩家执行！"
+  unknown_command: "&c未知命令！使用 /war help 查看帮助。"
+  config_error: "&c配置文件错误，请联系管理员！"

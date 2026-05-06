@@ -1,0 +1,20 @@
+# War Plugin Configuration
+# 战争插件配置文件
+
+# 战利品箱子位置（由管理员通过 /war admin box 设置）
+chest:
+  world: world
+  x: 0
+  y: 0
+  z: 0
+  yaw: 0
+  pitch: 0
+
+# 战场位置（由管理员通过 /war admin field 设置）
+field:
+  world: world
+  x: 0
+  y: 0
+  z: 0
+  yaw: 0
+  pitch: 0

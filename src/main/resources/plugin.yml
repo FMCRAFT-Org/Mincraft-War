@@ -1,0 +1,23 @@
+name: War
+version: 1.0.0
+main: com.minecraft.war.WarPlugin
+api-version: '1.21'
+author: WarPlugin
+description: A Minecraft Spigot plugin for player challenges with loot system
+
+commands:
+  war:
+    description: War challenge command
+    usage: /war <challenge|accept|decline|done|confirm|stop|back|help|admin>
+    permission: war.use
+
+permissions:
+  war.use:
+    description: Allows use of basic war commands
+    default: true
+  war.challenge:
+    description: Allows challenging other players
+    default: true
+  war.admin:
+    description: Allows use of admin commands
+    default: op

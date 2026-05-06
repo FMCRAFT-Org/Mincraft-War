@@ -63,12 +63,14 @@ public class LanguageManager {
         
         messages.put("loot.place_hint", languageConfig.getString("loot.place_hint"));
         messages.put("loot.done_success", languageConfig.getString("loot.done_success"));
+        messages.put("loot.opponent_done", languageConfig.getString("loot.opponent_done"));
         messages.put("loot.already_done", languageConfig.getString("loot.already_done"));
         messages.put("loot.both_done", languageConfig.getString("loot.both_done"));
         messages.put("loot.chest_locked", languageConfig.getString("loot.chest_locked"));
         messages.put("loot.no_active_challenge", languageConfig.getString("loot.no_active_challenge"));
         
         messages.put("confirm.success", languageConfig.getString("confirm.success"));
+        messages.put("confirm.opponent_confirmed", languageConfig.getString("confirm.opponent_confirmed"));
         messages.put("confirm.already_confirmed", languageConfig.getString("confirm.already_confirmed"));
         messages.put("confirm.both_confirmed", languageConfig.getString("confirm.both_confirmed"));
         messages.put("confirm.not_done_placing", languageConfig.getString("confirm.not_done_placing"));

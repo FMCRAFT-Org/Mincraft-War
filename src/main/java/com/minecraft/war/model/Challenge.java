@@ -32,6 +32,7 @@ public class Challenge {
     private boolean opponentConfirmed;
     private List<ItemStack> challengerItems;
     private List<ItemStack> opponentItems;
+    private long stateStartTime;
     
     public Challenge(Player challenger, boolean isPublic) {
         this.challengerId = challenger.getUniqueId();
@@ -44,6 +45,7 @@ public class Challenge {
         this.opponentConfirmed = false;
         this.challengerItems = new ArrayList<>();
         this.opponentItems = new ArrayList<>();
+        this.stateStartTime = System.currentTimeMillis();
     }
     
     public Challenge(Player challenger, Player opponent) {

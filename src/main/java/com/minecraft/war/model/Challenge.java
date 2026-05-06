@@ -85,6 +85,11 @@ public class Challenge {
     
     public void setState(State state) {
         this.state = state;
+        this.stateStartTime = System.currentTimeMillis();
+    }
+    
+    public long getStateStartTime() {
+        return stateStartTime;
     }
     
     public Location getChallengerOriginalLocation() {

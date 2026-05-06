@@ -550,6 +550,9 @@ public class ChallengeManager {
     }
     
     public void cleanup() {
+        if (timeoutTask != null) {
+            timeoutTask.cancel();
+        }
         for (Challenge challenge : activeChallenges.values().stream().distinct().collect(Collectors.toList())) {
             endChallengeWithRefund(challenge);
         }

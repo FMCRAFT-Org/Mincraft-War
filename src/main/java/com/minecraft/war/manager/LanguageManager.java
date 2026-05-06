@@ -105,6 +105,9 @@ public class LanguageManager {
         messages.put("error.player_only", languageConfig.getString("error.player_only"));
         messages.put("error.unknown_command", languageConfig.getString("error.unknown_command"));
         messages.put("error.config_error", languageConfig.getString("error.config_error"));
+        
+        messages.put("timeout.challenge_expired", languageConfig.getString("timeout.challenge_expired"));
+        messages.put("timeout.challenge_timeout", languageConfig.getString("timeout.challenge_timeout"));
     }
     
     public String getMessage(String key) {
